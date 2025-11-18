@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Album;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class Main extends Controller
 {
     public function index(){
-        $albums =  DB::SELECT("SELECT * FROM albums");
-        $photos = DB::SELECT("SELECT * FROM photos");
-        return view('index');
+        $album =  Album::orderby('creation')->take(3)->get();
+        $tab = [];
+        // for($i=0; $i < count($album); $i++) {
+        //     $tab[$i] = $album->photos->take(1)->get();
+        // }
+        // dd::$tab;
+
+        return view('index', ['albums' => $album, 'tab' => $tab]);
     }
 
     public function album(){
