@@ -8,6 +8,5 @@ use Illuminate\Support\Facades\DB;
 class Main extends Controller
 {
     public function index(){
-        return view("index");
     }
 }
