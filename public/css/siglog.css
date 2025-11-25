@@ -1,0 +1,23 @@
+:root {
+    --blanc : #FFF8F1;
+    --lightblue : #2F1FE0;
+    --darkblue  : #09005B;
+}
+
+body {
+    background-color: var(--darkblue);
+}
+
+#signin_div {
+    max-width: 400px;
+    margin: auto;
+}
+
+form {
+    background-color: var(--blanc);
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    gap: 15px;
+    border-radius: 15px;
+}

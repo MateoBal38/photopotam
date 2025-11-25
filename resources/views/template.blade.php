@@ -18,14 +18,12 @@
 
     </header>
 
-    @yield('content')
-
+    <main class="content">
+        @yield('content')
+    </main>
 
     <footer>
-
-        <span>Photopotam - 2025. All rights reserved</span>
-        <span>Property of LEGRAND Alexandre and BAL Matéo. MMI CORPORATION</span>
-
+        <span>Photopotam - 2025. All rights reserved, Property of LEGRAND Alexandre and BAL Matéo. MMI CORPORATION</span>
     </footer>
 
 </body>
