@@ -16,8 +16,8 @@ class Main extends Controller
         // }
         // dd::$tab;
 
-        $photos = db::SELECT('SELECT * FROM albums JOIN photos ON photos.album_id = albums.id ORDER BY RAND() LIMIT 3;');
-        //dd($photos);
+        $photos = db::SELECT('SELECT * FROM albums JOIN photos ON photos.album_id = albums.id ORDER BY RAND() LIMIT 4;');
+        // dd($photos);
         return view('index', ['photos' => $photos]);
     }
 

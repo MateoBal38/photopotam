@@ -5,25 +5,30 @@
 @endpush
 
 @section('content')
+    <div class="container">
 
-<div class="container">
+    <div id="slogan">
+        <span id="maj">Welcome to Photopotam</span></br>
+        <span id="sous_titre">Our Dream View</span>
+    </div>
 
-<div id="signin_div">
-    <form method="post">
+    <div id="signin_div">
+        <form method="post">
+            @csrf
+        <h1>S'inscrire</h1>
 
-    <h1>S'inscrire</h1>
+            <input name="username" type="text" placeholder="Nom d'utilisateur" required>
+            <input name="email" type="email" placeholder="Adresse e-mail" required>
+            <input name="password" type="password" placeholder="Mot de passe" required>
+            <input name="password_confirmation" type="password" placeholder="Confirmer le mot de passe" required>
+            <button type="submit">S'inscrire</button>
 
-        <input name="username" type="text" placeholder="Nom d'utilisateur" required>
-        <input name="email" type="email" placeholder="Adresse e-mail" required>
-        <input name="password" type="password" placeholder="Mot de passe" required>
-        <input name="password_confirmation" type="password" placeholder="Confirmer le mot de passe" required>
-        <button type="submit">S'inscrire</button>
+            <span>Déjà un compte ? <a href="/login">Se connecter</a></span>
 
-        <span>Déjà un compte ? <a href="/login">Se connecter</a></span>
+        </form>
+    </div>
 
-    </form>
+    <div id="appareil"><img src="{{ asset('img/appareil.png') }}"></div>
+
 </div>
-
-</div>
-
 @endsection

@@ -5,12 +5,30 @@
 }
 
 body {
-    background-color: var(--darkblue);
+    height: 78.5vh;
+    background:linear-gradient(-45deg, var(--lightblue) 0%, var(--darkblue) 100%);
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+header {
+    display: none;
+}
+
+h1 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: var(--blanc);
 }
 
 #signin_div {
     max-width: 400px;
     margin: auto;
+    margin-top: 15%;
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.5);
 }
 
 form {
@@ -20,4 +38,62 @@ form {
     padding: 20px;
     gap: 15px;
     border-radius: 15px;
+}
+
+form input {
+    border: none;
+    border-radius: 7px;
+    padding: 20px 10px;
+}
+
+form input::placeholder{
+    opacity: 0.4;
+}
+
+form button {
+    background-color: var(--lightblue);
+    color: var(--blanc);
+    border: none;
+    border-radius: 7px;
+    padding: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    width: 40%;
+    margin: auto;
+}
+
+form span {
+    font-family: 'Montserrat', sans-serif;
+}
+
+form span a {
+    font-weight: bold;
+    color: var(--lightblue);
+}
+
+#slogan {
+    color: var(--blanc);
+    width: 39%;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#slogan #maj {
+    font-size: 55px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#slogan #sous_titre {
+    font-size: 30px;
+}
+
+#appareil img {
+    position: absolute;
+    bottom: 70px;
+    right: 0;
+    width: 30%;
+    height: auto;
 }
