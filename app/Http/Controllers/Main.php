@@ -32,7 +32,7 @@ class Main extends Controller
     public function detailAlbum($id){
         $album = db::SELECT('SELECT *, albums.titre as titre_album FROM albums JOIN photos ON photos.album_id = albums.id WHERE albums.id = ?;', [$id]);
 
-        dd($album);
+        //dd($album);
 
         return view('detailAlbum', ['album' => $album]);
     }

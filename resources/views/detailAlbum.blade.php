@@ -7,7 +7,7 @@
 @section('content')
 
 
-<h1>{{$id}}</h1>
+<h1>{{$album[0]->titre_album}}</h1>
 
 
 @endsection
