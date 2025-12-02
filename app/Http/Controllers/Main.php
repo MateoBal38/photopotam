@@ -21,10 +21,17 @@ class Main extends Controller
         return view('index', ['photos' => $photos]);
     }
 
-    public function album(){
-        $albums = db::SELECT('SELECT albums.*, MIN(photos.url) AS photo_url FROM albums JOIN photos ON photos.album_id = albums.id GROUP BY albums.id;');
+    public function album(Request $request){
+        $search = $request->input("search");
 
-        //dd($albums);
+        $sql_albums = 'SELECT albums.*, MIN(photos.url) AS photo_url FROM albums JOIN photos ON photos.album_id = albums.id ';
+        $group_by = 'GROUP BY albums.id;';
+
+        if($search) {
+            $albums = db::SELECT($sql_albums . 'WHERE albums.titre LIKE ? OR albums.creation LIKE ? ' . $group_by, ["%{$search}%", "%{$search}%"]);
+        }else {
+            $albums = db::SELECT($sql_albums . $group_by);
+        }
 
         return view('album', ['albums' => $albums]);
     }
@@ -39,15 +46,22 @@ class Main extends Controller
                             JOIN possede_tag ON possede_tag.tag_id = tags.id
                             JOIN photos ON photos.id = possede_tag.photo_id
                             JOIN albums ON albums.id = photos.album_id
-                            WHERE albums.id = ?;', [$id]);
+                            WHERE albums.id = ?', [$id]);
         
         if($search) {
             $album = db::SELECT($sql_album . 'AND photos.titre LIKE ?;', [$id, "%{$search}%"]);
         }
 
+        $liste_tags = db::SELECT('SELECT DISTINCT tags.nom, tags.id
+                                FROM tags
+                                JOIN possede_tag ON possede_tag.tag_id = tags.id
+                                JOIN photos ON photos.id = possede_tag.photo_id
+                                JOIN albums ON albums.id = photos.album_id
+                                WHERE albums.id = ?;', [$id]);
+
         //dd($album);
 
-        return view('detailAlbum', ['album' => $album, 'tags' => $tags, 'id' => $id]);
+        return view('detailAlbum', ['album' => $album, 'tags' => $tags, 'id' => $id, 'liste_tags' => $liste_tags]);
     }
 
     public function signin(){   

@@ -17,6 +17,15 @@
 
 </form>
 
+@if($liste_tags)
+
+    @foreach($liste_tags as $l)
+
+        <a href="/detailAlbum/{{$id}}?tag={{$l->nom}}">{{$l->nom}}</a>
+    @endforeach
+
+@endif
+
 @if($album == [])
 
     <h1>Pas de photos !</h1>

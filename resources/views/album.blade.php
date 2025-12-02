@@ -7,6 +7,17 @@
 @section('content')
 
 
+<form method="GET" action="/album">
+
+    @csrf
+
+    <input name="search" type="text" placeholder="Rechercher un album par date ou par nom" required></input>
+
+    <input name="button" type="submit" placeholder="Rechercher"></input>
+
+</form>
+
+
 @foreach($albums as $a)
 
     <a href="/detailAlbum/{{$a->id}}">
