@@ -29,12 +29,25 @@ class Main extends Controller
         return view('album', ['albums' => $albums]);
     }
 
-    public function detailAlbum($id){
-        $album = db::SELECT('SELECT *, albums.titre as titre_album FROM albums JOIN photos ON photos.album_id = albums.id WHERE albums.id = ?;', [$id]);
+    public function detailAlbum(Request $request, $id){
+        $search = $request->input("search");
+
+        $sql_album = 'SELECT *, albums.titre as titre_album FROM albums JOIN photos ON photos.album_id = albums.id WHERE albums.id = ? ';
+        $album = db::SELECT($sql_album, [$id]);
+
+        $tags = db::SELECT('SELECT tags.nom, tags.id, possede_tag.photo_id FROM tags 
+                            JOIN possede_tag ON possede_tag.tag_id = tags.id
+                            JOIN photos ON photos.id = possede_tag.photo_id
+                            JOIN albums ON albums.id = photos.album_id
+                            WHERE albums.id = ?;', [$id]);
+        
+        if($search) {
+            $album = db::SELECT($sql_album . 'AND photos.titre LIKE ?;', [$id, "%{$search}%"]);
+        }
 
         //dd($album);
 
-        return view('detailAlbum', ['album' => $album]);
+        return view('detailAlbum', ['album' => $album, 'tags' => $tags, 'id' => $id]);
     }
 
     public function signin(){   
