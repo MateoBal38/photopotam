@@ -7,6 +7,7 @@
 @section('content')
     <div class="container">
 
+    <div id="naaan">
     <div id="slogan">
         <span id="maj">Welcome to Photopotam</span></br>
         <span id="sous_titre">Our Dream View</span>
@@ -27,7 +28,7 @@
 
         </form>
     </div>
-
+    </div>
     <div id="appareil"><img src="{{ asset('img/appareil.png') }}"></div>
 
 </div>

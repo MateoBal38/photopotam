@@ -7,12 +7,14 @@
 @section('content')
     <div class="container">
 
+    <div id="naaan">
+
     <div id="slogan">
         <span id="maj">Welcome Back </br>To Photopotam</span></br>
         <span id="sous_titre">Our Dream View</span>
     </div>
 
-    <div id="signin_div">
+    <div id="login_div">
         <form method="post">
             @csrf
         <h1>Se connecter</h1>
@@ -25,7 +27,7 @@
 
         </form>
     </div>
-
+    </div>
     <div id="appareil"><img src="{{ asset('img/appareil.png') }}"></div>
 
 </div>

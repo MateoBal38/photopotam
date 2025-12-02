@@ -24,11 +24,11 @@ a {
     color: var(--blanc);
 }
 
-#signin_div {
-    max-width: 400px;
+#login_div {
+    max-width: 35%;
     margin: auto;
     margin-top: 15%;
-    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.5);
+    margin-right: 25%;
 }
 
 form {
@@ -38,6 +38,8 @@ form {
     padding: 20px;
     gap: 15px;
     border-radius: 15px;
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.5);
+    width: 100%;
 }
 
 form input {
@@ -73,10 +75,7 @@ form span a {
 
 #slogan {
     color: var(--blanc);
-    width: 39%;
-    position: absolute;
-    top: 20%;
-    left: 10%;
+    width: 45%;
     font-family: 'Montserrat', sans-serif;
 }
 
@@ -96,4 +95,16 @@ form span a {
     right: 0;
     width: 30%;
     height: auto;
+}
+
+#naaan {
+    display: flex;
+    align-items: center;
+}
+
+#signin_div {
+    max-width: 50%;
+    margin: auto;
+    margin-top: 10%;
+    margin-right: 25%;
 }

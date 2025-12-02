@@ -9,10 +9,6 @@
     margin: auto;
 }
 
-html, body {
-    height: 100%;
-}
-
 a {
     text-decoration: none;
     color: var(--darkblue);
@@ -39,6 +35,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    background-repeat: no-repeat;
 }
 
 main, .content {
