@@ -45,16 +45,18 @@
     <h1>Pas de photos !</h1>
 
 @else
-
+<div class="photo-grid">
     @foreach ($photos as $photo)
-    <span>{{$photo->titre}}</span>
-    <img src="{{ $photo->url }}">
+    <div class="photo-item">
+    <span id="look">{{$photo->titre}}</span></br>
+    <img src="{{ $photo->url }}"></br>
 
         @foreach ($photo->tags as $tag)
-            <span class="badge">{{ $tag->nom }}</span>
+            <span class="badge"> #{{ $tag->nom }}</span>
         @endforeach
+    </div>
     @endforeach
-
+</div>
 @endif
 
 

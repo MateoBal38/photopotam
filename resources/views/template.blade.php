@@ -13,8 +13,10 @@
         <nav>
         <a href="/">index</a>
         <a href="/album">album</a>
+        @guest
         <a href="/register">signin</a>
         <a href="/login">login</a>
+        @endguest
         </nav>
     </header>
 
