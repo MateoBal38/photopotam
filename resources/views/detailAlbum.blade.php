@@ -19,7 +19,7 @@
         @foreach($liste_tags as $tag)
             <option value="{{ $tag->nom }}"
                 @if(is_array(request('tags')) && in_array($tag->nom, request('tags'))) selected @endif
-            >
+            >   
                 {{ $tag->nom }}
             </option>
         @endforeach
