@@ -11,25 +11,27 @@
     
     <header>
         <nav>
-        <a href="/">index</a>
-        <a href="/album">album</a>
+        <a href="/">Accueil</a>
+        <a href="/album">Albums</a>
         @guest
-        <a href="/register">signin</a>
-        <a href="/login">login</a>
+        <a href="/register">S'inscrire</a>
+        <a href="/login">Se connecter</a>
         @endguest
+
+        @auth
+            <a href="/create_album">Créer un album</a>
+
+            <a href="{{route("logout")}}"
+            onclick="document.getElementById('logout').submit(); return false;">Se déconnecter</a>
+            <form id="logout" action="{{route("logout")}}" method="post">
+                @csrf
+            </form>
+        @endauth
         </nav>
     </header>
 
     @auth
         <h1>Bonjour {{Auth::user()->name}}</h1>
-        
-        <a href="/create_album">Créer un album</a>
-
-        <a href="{{route("logout")}}"
-           onclick="document.getElementById('logout').submit(); return false;">Logout</a>
-        <form id="logout" action="{{route("logout")}}" method="post">
-            @csrf
-        </form>
     @endauth
 
     <main class="content">

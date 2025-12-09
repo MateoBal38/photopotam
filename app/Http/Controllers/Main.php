@@ -34,7 +34,7 @@ class Main extends Controller
     }
 
     $albums = $albumWithPreview->get();
-
+    
     return view('album', ['albums' => $albums]);
     }
 
@@ -89,6 +89,7 @@ class Main extends Controller
         return view('detailAlbum', ['id' => $id, 'album' => $album, 'liste_tags' => $liste_tags, 'photos' => $photos]);
     }
 
+
     public function register(){   
         return view('register');
     }
@@ -113,6 +114,16 @@ class Main extends Controller
         ]);
         
         return redirect ("/album");
+    }
+
+    public function perso(){
+        $albums = Album::query()->with(['photos' => function ($query) {
+            $query->orderBy('url')->limit(1);
+        }])->where('id', 'LIKE', Auth::id())->get(); 
+
+        dd($albums);
+
+        return view('perso', ['albums' => $albums]);
     }
 
 }

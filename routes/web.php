@@ -26,5 +26,6 @@ Route::get('/detailAlbum/{id}', [Main::class, 'detailAlbum'])->where("id", "[0-9
 Route::get('/create_album', [Main::class, 'create_album'])->middleware('auth');
 Route::post('/store_album', [Main::class, 'store_album'])->middleware('auth');
 
+Route::get('/perso', [Main::class, 'perso'])->middleware('auth');
 
 // Route::get('/logout', [Main::class, 'logout']);
