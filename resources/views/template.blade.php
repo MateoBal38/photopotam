@@ -10,24 +10,25 @@
 <body>
     
     <header>
-        <nav>
-        <a href="/">Accueil</a>
-        <a href="/album">Albums</a>
-        @guest
-        <a href="/register">S'inscrire</a>
-        <a href="/login">Se connecter</a>
-        @endguest
-
-        @auth
-            <a href="/create_album">Créer un album</a>
-            <a href="/perso">Mes albums</a>
-            <a href="{{route("logout")}}"
-            onclick="document.getElementById('logout').submit(); return false;">Se déconnecter</a>
-            <form id="logout" action="{{route("logout")}}" method="post">
-                @csrf
-            </form>
-        @endauth
-        </nav>
+        <div class="container site-header">
+            <div class="logo">
+                <div class="mark"></div>
+                <div>Photopotam</div>
+            </div>
+            <nav class="site-nav">
+                <a href="/">Accueil</a>
+                <a href="/album">Albums</a>
+                @guest
+                <a href="/register">S'inscrire</a>
+                <a href="/login">Se connecter</a>
+                @endguest
+                @auth
+                <a href="/create_album" class="btn ghost">Nouveau</a>
+                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout').submit();" class="btn ghost">Logout</a>
+                <form id="logout" action="{{route('logout')}}" method="post" style="display:none">@csrf</form>
+                @endauth
+            </nav>
+        </div>
     </header>
 
     @auth

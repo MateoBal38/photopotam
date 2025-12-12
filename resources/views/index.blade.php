@@ -6,11 +6,12 @@
 
 @section('content')
 
-<div class="carousel">
+<div class="hero-carousel container">
     <div class="carousel-track">
         @foreach ($photos as $p)
             <div class="slide">
                 <img src="{{ $p->url }}" alt="{{ $p->titre }}">
+                <div class="overlay"></div>
             </div>
         @endforeach
     </div>
@@ -31,11 +32,11 @@
                 index = 0;
             }, 1000);
         }
-        
+
         index++;
 
         track.style.transition = "transform 1s ease-in-out";
-        track.style.transform = `translateX(-${index * 100}vw)`;
+        track.style.transform = `translateX(-${index * 100}%)`;
     }
 
     setInterval(nextSlide, 4000);

@@ -7,32 +7,37 @@
 @section('content')
 
 
-<form method="GET" action="/album">
+<div class="controls container">
+    <div class="search">
+        <form method="GET" action="/album" style="display:flex; width:100%">
+            @csrf
+            <input name="search" type="text" placeholder="Rechercher un album par date ou par nom" required />
+            <button class="btn" type="submit">Rechercher</button>
+        </form>
+    </div>
+    <div>
+        <a href="/create_album" class="btn">Nouveau album</a>
+    </div>
+</div>
 
-    @csrf
-
-    <input name="search" type="text" placeholder="Rechercher un album par date ou par nom" required></input>
-
-    <input name="button" type="submit" placeholder="Rechercher"></input>
-
-</form>
-
-
-@foreach($albums as $a)
-
-    <a href="/detailAlbum/{{$a->id}}">
-        <div>
-
-            <span>{{$a->titre}}</span>
-            <span>{{$a->creation}}</span>
-            <span>{{$a->user_id}}</span>
-            @if(isset($a->preview) && $a->preview)
-                <img src="{{ $a->preview->url }}" alt="">
-            @endif
-
-        </div>
-    </a>
-@endforeach
-
+<div class="container">
+    <div id="albums_container">
+        @foreach($albums as $a)
+            <a href="/detailAlbum/{{$a->id}}" style="text-decoration:none;">
+                <div class="album-card card">
+                    @if(isset($a->preview) && $a->preview)
+                        <img class="thumb" src="{{ $a->preview->url }}" alt="{{ $a->titre }}">
+                    @else
+                        <div class="thumb" style="display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));color:var(--muted);">Aucune photo</div>
+                    @endif
+                    <div class="album-meta">
+                        <div class="title">{{ $a->titre }}</div>
+                        <div class="info">Créé le {{ $a->creation }} · Propriété: {{ $a->user_id }}</div>
+                    </div>
+                </div>
+            </a>
+        @endforeach
+    </div>
+</div>
 
 @endsection
