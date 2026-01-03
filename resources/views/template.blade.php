@@ -19,11 +19,12 @@
                 <a href="/">Accueil</a>
                 <a href="/album">Albums</a>
                 @guest
-                <a href="/register">S'inscrire</a>
-                <a href="/login">Se connecter</a>
+                <a href="{{ route('register') }}">S'inscrire</a>
+                <a href="{{ route('login') }}">Se connecter</a>
                 @endguest
                 @auth
-                <a href="/create_album" class="btn ghost">Nouveau</a>
+                <a href="{{ route('album.create') }}" class="btn ghost">Nouveau</a>
+                <a href="/perso" class="btn ghost">Mon espace</a>
                 <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout').submit();" class="btn ghost">Logout</a>
                 <form id="logout" action="{{route('logout')}}" method="post" style="display:none">@csrf</form>
                 @endauth

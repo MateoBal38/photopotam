@@ -19,7 +19,7 @@
         @foreach($liste_tags as $tag)
             <option value="{{ $tag->nom }}"
                 @if(is_array(request('tags')) && in_array($tag->nom, request('tags'))) selected @endif
-            >
+            >   
                 {{ $tag->nom }}
             </option>
         @endforeach
@@ -27,7 +27,7 @@
 
 </form>
 
-@if($liste_tags)
+<!-- @if($liste_tags)
 
     @foreach($liste_tags as $l)
     <a href="?tag={{ $l->nom }}"
@@ -36,7 +36,20 @@
     </a>
 @endforeach
 
-@endif
+@endif -->
+
+@auth 
+    @if(Auth::id() == $album->user_id)
+    <form method="post" action="{{ route('photo.store') }}" enctype="multipart/form-data">
+        @csrf    
+        <input type="hidden" name="album_id" value="{{$id}}"></input>
+        <input type="text" name="titre" value="{{ old('titre') }}" placeholder="Nom de la photo" required></input>
+        <input type="file" name="image" value="{{ old('image') }}" required></input>
+        <input type="submit" value="Ajouter une photo"></input>
+    </form>
+    @endif
+
+@endauth
 
     <h1>{{$album->titre}}</h1>
 
