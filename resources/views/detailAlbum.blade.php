@@ -7,23 +7,23 @@
 @section('content')
 
 
-<form method="GET" action="/detailAlbum/{{$id}}">
+<form method="GET" action="{{ route('album.show', $id) }}">
 
-    @csrf
+    <input
+        type="text"
+        name="search"
+        placeholder="Rechercher une photo"
+        value="{{ request('search') }}"
+    >
 
-    <input name="search" type="text" placeholder="Rechercher une photo" required></input>
+    @foreach ($liste_tags as $tag)
+        <label>
+            <input type="checkbox" name="tags[]" value="{{ $tag->id }}" @if(is_array(request('tags')) && in_array($tag->id, request('tags'))) checked @endif>
+            {{ $tag->nom }}
+        </label>
+    @endforeach
 
-    <input name="button" type="submit" placeholder="Rechercher"></input>
-
-    <select name="tags[]" multiple>
-        @foreach($liste_tags as $tag)
-            <option value="{{ $tag->nom }}"
-                @if(is_array(request('tags')) && in_array($tag->nom, request('tags'))) selected @endif>   
-                {{ $tag->nom }}
-            </option>
-        @endforeach
-    </select>
-
+    <input type="submit" value="Rechercher"></input>
 </form>
 
 

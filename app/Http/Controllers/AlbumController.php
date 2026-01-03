@@ -73,12 +73,26 @@ class AlbumController extends Controller
         $liste_tags = Tag::whereHas('photos', function ($q) use ($id) {
             $q->where('album_id', $id);
         })->distinct()->get();
-
-
-        if($search) {
-            $photos = Photo::where('album_id', $id)->where('titre', 'LIKE', "%{$search}%")->get();
-        }
         
+        $tags = $request->input('tags');
+
+        $photosQuery = Photo::where('album_id', $id)->with('tags');
+
+        if ($search) {
+            $photosQuery->where('titre', 'LIKE', "%{$search}%");
+        }
+
+        if ($tags && is_array($tags)) {
+            foreach ($tags as $tagId) {
+                $photosQuery->whereHas('tags', function ($q) use ($tagId) {
+                    $q->where('tags.id', $tagId);
+                });
+            }
+        }
+
+
+        $photos = $photosQuery->get();
+
         
         return view('detailAlbum', ['id' => $id, 'album' => $album, 'liste_tags' => $liste_tags, 'photos' => $photos]);
     }
