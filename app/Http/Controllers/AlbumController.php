@@ -90,9 +90,14 @@ class AlbumController extends Controller
             }
         }
 
+        $noteOrder = $request->input('note');
+        if ($noteOrder === 'asc') {
+            $photosQuery->orderBy('note', 'asc');
+        } elseif ($noteOrder === 'desc') {
+            $photosQuery->orderBy('note', 'desc');
+        }
 
         $photos = $photosQuery->get();
-
         
         return view('detailAlbum', ['id' => $id, 'album' => $album, 'liste_tags' => $liste_tags, 'photos' => $photos]);
     }

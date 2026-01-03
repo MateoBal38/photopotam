@@ -10,12 +10,7 @@
 
 <form method="GET" action="{{ route('album.show', $id) }}">
 
-    <input
-        type="text"
-        name="search"
-        placeholder="Rechercher une photo"
-        value="{{ request('search') }}"
-    >
+    <input type="text" name="search" placeholder="Rechercher une photo" value="{{ request('search') }}">
 
     @foreach ($liste_tags as $tag)
         <label>
@@ -23,6 +18,12 @@
             {{ $tag->nom }}
         </label>
     @endforeach
+
+    <select name="note">
+        <option value="">Trier par note</option>
+        <option value="asc" @if(request('note') === 'asc') selected @endif>Notes croissantes</option>
+        <option value="desc" @if(request('note') === 'desc') selected @endif>Notes décroissantes</option>
+    </select>
 
     <input type="submit" value="Rechercher"></input>
 </form>
@@ -80,10 +81,13 @@
     <span id="look">{{$photo->titre}}</span></br>
     <img src="{{ $photo->url }}" class="grand"></br>
 
+    <div>
+        <span> Note : {{$photo->note}} </span>
         @foreach ($photo->tags as $tag)
             <span class="badge"> #{{ $tag->nom }}</span>
         @endforeach
-        
+    </div>    
+
         <form action="{{ route('photo.destroy', $photo->id) }}" method="POST" style="display:inline">
             @csrf
             @method('DELETE')
