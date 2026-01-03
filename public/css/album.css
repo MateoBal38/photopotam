@@ -1,12 +1,13 @@
 #albums_container{
     display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: var(--gap);
     align-items:start;
+    justify-content: center;
 }
 
 .album-card{
-    border-radius:12px;
+    border-radius:var(--radius);
     overflow:hidden;
     position:relative;
     transition:transform .25s ease, box-shadow .25s ease;

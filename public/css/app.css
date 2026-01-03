@@ -76,6 +76,7 @@ footer{
     text-align:center;
     color:var(--muted);
     border-top:1px solid rgba(255,255,255,0.03);
+    background: var(--bg);
 }
 
 /* Utility buttons */
@@ -86,7 +87,7 @@ footer{
     background:var(--accent);
     color:#032018;
     padding:10px 14px;
-    border-radius:10px;
+    border-radius:var(--radius);
     font-weight:700;
     cursor:pointer;
     border:none;
@@ -94,7 +95,7 @@ footer{
 
 .btn.ghost{
     background:var(--accent);
-    color:black;
+    color:#032018;
     border:1px solid rgba(255,255,255,0.06);
 }
 
@@ -135,7 +136,6 @@ footer{
     padding:10px 14px;
 }
 
-/* Helpers */
 .muted{
     color:var(--muted);
 }
@@ -145,6 +145,10 @@ footer{
 }
 
 @media (max-width:720px){
-    .controls{flex-direction:column; align-items:stretch}
+    .controls{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
     .logo{font-size:16px}
 }
