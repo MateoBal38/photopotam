@@ -6,6 +6,7 @@
 
 @section('content')
 
+<div class="container">
 
 <form method="GET" action="{{ route('album.show', $id) }}">
 
@@ -30,26 +31,43 @@
 
 @auth 
     @if(Auth::id() == $album->user_id)
-    <form method="post" action="{{ route('photo.store') }}" enctype="multipart/form-data">
-        @csrf    
-        <input type="hidden" name="album_id" value="{{$id}}"></input>
-        <input type="text" name="titre" value="{{ old('titre') }}" placeholder="Nom de la photo" required></input>
-        <input type="file" name="image" value="{{ old('image') }}" required></input>
-            @foreach($liste_tags as $l)
-                <label>
-                    <input type="checkbox" name="tags[]" value="{{ $l->id }}">
-                    {{ $l->nom }}
-                </label>
-            @endforeach
+    <button id="add-photo-btn" class="add-photo-btn">Ajouter une photo</button>
 
-        <input type="submit" value="Ajouter une photo"></input>
-    </form>
+    <div id="add-photo-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Ajouter une photo</h2>
+            <form method="post" action="{{ route('photo.store') }}" enctype="multipart/form-data" class="add-photo-form">
+                @csrf    
+                <input type="hidden" name="album_id" value="{{$id}}"></input>
+                <div class="form-group">
+                    <label for="titre">Titre de la photo</label>
+                    <input type="text" id="titre" name="titre" value="{{ old('titre') }}" placeholder="Nom de la photo" required>
+                </div>
+                <div class="form-group">
+                    <label for="image">Fichier image</label>
+                    <input type="file" id="image" name="image" value="{{ old('image') }}" required>
+                </div>
+                <div class="form-group">
+                    <label>Tags (optionnel)</label>
+                    <div class="tags-section">
+                        @foreach($liste_tags as $l)
+                            <label class="tag-checkbox">
+                                <input type="checkbox" name="tags[]" value="{{ $l->id }}">
+                                {{ $l->nom }}
+                            </label>
+                        @endforeach
+                    </div>
+                </div>
+                <input type="submit" value="Ajouter">
+            </form>
+        </div>
+    </div>
     @endif
 
 @endauth
 
     <h1>{{$album->titre}}</h1>
-    <h2>{{optional($album->user)->name}}</h2>
 
 @if($photos->isEmpty())
 
@@ -78,6 +96,8 @@
     @endforeach
 </div>
 @endif
+
+</div>
 
 <script src="{{asset('js/script.js')}}"></script>
 @endsection
