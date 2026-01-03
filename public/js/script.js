@@ -33,3 +33,26 @@ overlay.addEventListener('click', (e) => {
     if (e.target === bigImg) return;
     overlay.style.display = 'none';
 });
+
+// Modal for add photo
+const addPhotoBtn = document.getElementById('add-photo-btn');
+const addPhotoModal = document.getElementById('add-photo-modal');
+const closeBtn = document.getElementsByClassName('close')[0];
+
+if (addPhotoBtn) {
+    addPhotoBtn.addEventListener('click', () => {
+        addPhotoModal.style.display = 'block';
+    });
+}
+
+if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+        addPhotoModal.style.display = 'none';
+    });
+}
+
+window.addEventListener('click', (e) => {
+    if (e.target === addPhotoModal) {
+        addPhotoModal.style.display = 'none';
+    }
+});
