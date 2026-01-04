@@ -16,16 +16,16 @@
                 <div>Photopotam</div>
             </div>
             <nav class="site-nav">
-                <a href="/">Accueil</a>
-                <a href="/album">Albums</a>
+                <a href="/" class="links">Accueil</a>
+                <a href="/album" class="links">Albums</a>
                 @guest
-                <a href="{{ route('register') }}">S'inscrire</a>
-                <a href="{{ route('login') }}">Se connecter</a>
+                <a href="{{ route('register') }}" class="links">S'inscrire</a>
+                <a href="{{ route('login') }}" class="links">Se connecter</a>
                 @endguest
                 @auth
-                <a href="{{ route('album.create') }}" class="btn ghost">Nouveau</a>
-                <a href="/perso" class="btn ghost">Mon espace</a>
-                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout').submit();" class="btn ghost">Logout</a>
+                <a href="{{ route('album.create') }}" class="btn">Nouveau</a>
+                <a href="/perso" class="btn">Mon espace</a>
+                <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout').submit();" class="btn">Logout</a>
                 <form id="logout" action="{{route('logout')}}" method="post" style="display:none">@csrf</form>
                 @endauth
             </nav>

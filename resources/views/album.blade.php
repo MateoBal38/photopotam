@@ -15,9 +15,12 @@
             <button class="btn" type="submit">Rechercher</button>
         </form>
     </div>
+    
+    @auth
     <div>
-        <a href="/create_album" class="btn">Nouvel album</a>
+        <a href="{{ route('album.create') }}" class="btn">Nouvel album</a>
     </div>
+    @endauth
 </div>
 
 <div class="container">

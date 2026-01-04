@@ -14,6 +14,7 @@
         @csrf
 
         <input name="titre" placeholder="Nom de l'album" required>
+        
         <button type='submit'>Créer</button>
 
     </form>

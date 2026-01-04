@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Photo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,6 +36,11 @@ class PhotoController extends Controller
         'image' => 'required|image|max:5120',
         'tags' => 'nullable|array',
         'tags.*' => 'exists:tags,id',
+
+        'new_tags' => 'nullable|array',
+        'new_tags.*' => 'nullable|string|min:2|max:50',
+
+        'note' => 'required',
         ]);
 
         $name = $request->file('image')->hashName();
@@ -45,12 +51,27 @@ class PhotoController extends Controller
             'titre' => $data['titre'],
             'url' => $data['image'],
             'album_id' => $data['album_id'],
-            'user_id' => Auth::id()
+            'user_id' => Auth::id(),
+            'note' => $data['note']
             ]);
 
         if (!empty($data['tags'])) {
         $photo->tags()->attach($data['tags']);
         }
+
+        if (!empty($data['new_tags'])) {
+        foreach ($data['new_tags'] as $tagName) {
+            if (!empty($tagName)) {
+
+                    $tag = Tag::firstOrCreate([
+                        'nom' => strtolower(trim($tagName))
+                    ]);
+
+                    $photo->tags()->attach($tag->id);
+                }
+            }
+        }
+
 
         return back();
 

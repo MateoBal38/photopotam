@@ -59,6 +59,34 @@
                             </label>
                         @endforeach
                     </div>
+                            <h4>Tags pour cette photo</h4>
+                            <div id="tags-wrapper">
+                                <input type="text" name="new_tags[]" placeholder="Nom du tag">
+                            </div>
+
+                            <input type="button" onclick="addTagInput()" value="Ajouter un tag" name="new_tags[]"></input>
+
+                        <script>
+                        function addTagInput() {
+                            const wrapper = document.getElementById('tags-wrapper');
+                            const input = document.createElement('input');
+                            input.type = 'text';
+                            input.name = 'news_tags[]';
+                            input.placeholder = 'Nom du tag';
+                            wrapper.appendChild(input);
+                        }
+                        </script>
+
+                </div>
+                <div>
+                    <label for="note">Note pour la photo :</label>
+                    <select id="note" name="note">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
                 <input type="submit" value="Ajouter">
             </form>

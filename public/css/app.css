@@ -1,8 +1,8 @@
 :root{
-    --bg: #0f1724; /* deep navy */
+    --bg: #0f1724;
     --panel: #0b1220;
     --muted: #9aa4b2;
-    --accent: #6ee7b7; /* soft green */
+    --accent: #6ee7b7;
     --white: #f8fafc;
     --glass: rgba(255,255,255,0.04);
     --radius: 12px;
@@ -11,7 +11,6 @@
     --shadow-small: 0 6px 18px rgba(2,6,23,0.6);
 }
 
-/* Global layout */
 *{box-sizing:border-box}
 html,body{height:100vh}
 body{
@@ -33,7 +32,6 @@ body{
 
 main, .content{flex:1 1 auto; padding:40px 0}
 
-/* Header */
 header{
     background:transparent;
     padding:18px 0;
@@ -62,16 +60,18 @@ nav.site-nav{
 }
 
 nav.site-nav a{
-    color:var(--muted);
     text-decoration:none;
     font-weight:600;
+}
+
+nav.site-nav .links{
+    color:#9aa4b2;
 }
 
 nav.site-nav a:hover{
     color:var(--white);
 }
 
-/* Footer */
 footer{
     padding:28px 0;
     text-align:center;
@@ -80,7 +80,6 @@ footer{
     background: var(--bg);
 }
 
-/* Utility buttons */
 .btn{
     display:inline-flex;
     align-items:center;
@@ -92,15 +91,22 @@ footer{
     font-weight:700;
     cursor:pointer;
     border:none;
+    text-decoration: none;
 }
 
 .btn.ghost{
     background:var(--accent);
     color:#032018;
     border:1px solid rgba(255,255,255,0.06);
+    margin-top: 1rem;
 }
 
-/* Cards */
+.btn:hover {
+    background: #00ff80;
+    transform: translateY(-2px);
+    color:var(--white);
+}
+
 .card{
     background:linear-gradient(180deg,var(--panel), rgba(11,18,32,0.6));
     border-radius:var(--radius);
@@ -109,7 +115,6 @@ footer{
     overflow:hidden;
 }
 
-/* Search / actions row */
 .controls{
     display:flex;
     gap:12px;

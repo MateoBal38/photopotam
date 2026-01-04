@@ -9,8 +9,8 @@
 <div class="container">
     <div id="albums_container">
         @foreach($albums as $a)
-            <a href="{{ route('album.show', $a->id) }}" style="text-decoration:none;">
                 <div class="album-card">
+                    <a href="{{ route('album.show', $a->id) }}" style="text-decoration:none;">
                     @if($a->photos->isNotEmpty())
                         <img class="thumb" src="{{ $a->photos->first()->url }}" alt="{{ $a->titre }}">
                     @else
@@ -21,8 +21,8 @@
                         <div class="info">Créé le {{ $a->creation }}</div>
                         <a href="#" class="delete-link" onclick="event.stopPropagation(); document.getElementById('form-{{$a->id}}').submit();">Supprimer</a>
                     </div>
+                    </a>
                 </div>
-            </a>
             <form action="{{ route('album.destroy', $a->id) }}" method="POST" id="form-{{$a->id}}" style="display: none;">
                 @csrf
                 @method('DELETE')

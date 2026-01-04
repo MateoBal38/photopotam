@@ -224,10 +224,28 @@ input[type="submit"] {
     transition: background 0.3s ease, transform 0.2s ease;
 }
 
+.add-photo-form input[type="button"] {
+    padding: 12px 24px;
+    background: var(--accent);
+    color: #032018;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    align-self: flex-start;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
 .add-photo-form input[type="submit"]:hover {
     background: #00ff80;
     transform: translateY(-2px);
 }
+
+.add-photo-form input[type="button"]:hover {
+    background: #00ff80;
+    transform: translateY(-2px);
+}
+
 a {
     color: var(--muted);
     text-decoration: none;
@@ -243,14 +261,12 @@ a:hover {
     color: var(--accent);
 }
 
-/* Heading */
 h1 {
     text-align: center;
     margin-bottom: 24px;
     color: var(--white);
 }
 
-/* Photo item */
 .photo-item {
     background: linear-gradient(180deg, var(--panel), rgba(11,18,32,0.6));
     border-radius: var(--radius);
@@ -281,7 +297,6 @@ h1 {
     margin-bottom: 8px;
 }
 
-/* Badge */
 .badge {
     background: var(--glass);
     color: var(--accent);
@@ -289,6 +304,11 @@ h1 {
     border-radius: 6px;
     font-size: 12px;
     margin-right: 4px;
+}
+
+option {
+    background-color: #071222;
+    border: 5px solid black;
 }
 
 @media (max-width:720px){
