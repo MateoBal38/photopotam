@@ -158,3 +158,45 @@ footer{
 
     .logo{font-size:16px}
 }
+
+/* 404 Error Page Styles */
+.error-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 60vh;
+    text-align: center;
+}
+
+.error-content {
+    background: linear-gradient(180deg, var(--panel), rgba(11,18,32,0.6));
+    border-radius: var(--radius);
+    padding: 40px;
+    box-shadow: var(--shadow-small);
+    max-width: 500px;
+    width: 100%;
+}
+
+.error-code {
+    font-size: 120px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(110, 231, 183, 0.3);
+}
+
+.error-content h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.error-content p {
+    color: var(--muted);
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.error-content .btn {
+    margin-top: 20px;
+}
